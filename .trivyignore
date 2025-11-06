@@ -1,0 +1,8 @@
+# Trivy ignore file
+# Add CVE IDs to ignore (with justification comments)
+
+# Example:
+# CVE-2023-12345
+# Reason: False positive - not applicable to our use case
+# Reviewed: 2025-01-03
+# Expires: 2025-03-03

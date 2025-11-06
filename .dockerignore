@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+.github
+
+# Documentation
+*.md
+!README.md
+
+# Development
+.vscode
+.idea
+.DS_Store
+*.swp
+*.swo
+*~
+
+# CI/CD
+.gitlab-ci.yml
+
+# Temporary files
+*.log
+*.tmp

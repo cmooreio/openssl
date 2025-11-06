@@ -1,0 +1,61 @@
+# Build artifacts
+sbom-*.json
+sbom-*.xml
+attestation-*.json
+*.tar
+*.tar.gz
+
+# Docker build cache
+.docker/
+.buildx-cache/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.settings/
+.classpath
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Testing
+tests/__pycache__/
+tests/*.pyc
+test-results/
+coverage/
+
+# Secrets and credentials (safety net)
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+.env.local
+.env.*.local
+
+# Git conflict markers (vim)
+*.orig
+
+# Backup files
+*.bak
+*.backup

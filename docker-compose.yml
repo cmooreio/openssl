@@ -1,0 +1,43 @@
+services:
+  openssl:
+    build:
+      context: .
+      args:
+        VERSION: ${VERSION:-3.6.0}
+        SHA256: ${SHA256:-b6a5f44b7eb69e3fa35dbf15524405b44837a481d43d81daddde3ff21fcbb8e9}
+    image: cmooreio/openssl:latest
+    container_name: openssl
+
+    # Security hardening
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+    # Writable tmpfs mounts for temporary operations
+    tmpfs:
+      - /tmp:uid=101,gid=101,mode=1777
+      - /var/run:uid=101,gid=101,mode=1755
+
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
+
+    # Restart policy
+    restart: "no"
+
+    # OpenSSL runs as CLI tool - override entrypoint for service mode if needed
+    # By default, container will run 'openssl version' and exit
+    command: ["version"]
+
+    # Optional: Mount directories for certificate operations
+    # volumes:
+    #   - ./certs:/certs:rw
+    #   - ./private:/private:rw

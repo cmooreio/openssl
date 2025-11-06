@@ -1,0 +1,52 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "labels": ["dependencies"],
+  "assignees": ["@cmooreio"],
+  "reviewers": ["@cmooreio"],
+  "timezone": "America/New_York",
+  "schedule": ["before 5am on Monday"],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["docker", "major-update"],
+      "automerge": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "labels": ["docker", "minor-update"],
+      "automerge": false
+    },
+    {
+      "matchPackagePatterns": ["^openssl"],
+      "labels": ["openssl-update", "security"],
+      "automerge": false,
+      "prPriority": 10,
+      "schedule": ["before 5am on Monday"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "labels": ["github-actions"],
+      "automerge": true,
+      "automergeType": "pr",
+      "schedule": ["before 5am on Monday"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security", "vulnerability"],
+    "assignees": ["@cmooreio"],
+    "prPriority": 20
+  },
+  "prConcurrentLimit": 10,
+  "prCreation": "immediate",
+  "updateNotScheduled": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Dependency Dashboard",
+  "dependencyDashboardAutoclose": false,
+  "rebaseWhen": "conflicted",
+  "ignoreDeps": []
+}
